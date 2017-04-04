@@ -18,3 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+
+Route::get('/tablasap', function () {
+    return view('SAP.tablasSap');
+})->name('tablasap');
+
+
+Route::get( '/movil', function (){
+
+    return view('pruebas');
+} );
