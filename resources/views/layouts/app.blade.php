@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +12,19 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+    <style>
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
+        }
+    </style>
 
     <!-- Scripts -->
     <script>
@@ -44,6 +57,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav ">
                         <!-- Authentication Links -->
+
+                        <!-- Menu de sap -->
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ 'SAP' }} <span class="caret"></span>
@@ -55,6 +70,51 @@
                                     </li>
                                 </ul>
                             </li>
+                        <!-- #Menu de sap -->
+
+
+                        <!-- Menu de Utilidades -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ 'Utilidades' }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ route('forecast') }}">Cargar forecast</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- #Menu de Utilidades -->
+
+                        <!-- Menu de Documentacion -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ 'Documentación' }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+
+                                <li class="dropdown-submenu">
+                                    <a class="test" tabindex="-1" href="#">Modelos <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a tabindex="-1" href="{{ route('sqlserver') }}">SqlServer</a></li>
+
+                                   <!--     <li class="dropdown-submenu">
+                                            <a class="test" href="#">Another dropdown <span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">3rd level dropdown</a></li>
+                                                <li><a href="#">3rd level dropdown</a></li>
+                                            </ul>
+                                        </li>
+                                     -->
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <!-- #Menu de Documentacion -->
+
 
                     </ul>
 
@@ -95,5 +155,18 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+
+
+
+    <script>
+        $(document).ready(function(){
+            $('.dropdown-submenu a.test').on("click", function(e){
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+    </script>
 </body>
 </html>
